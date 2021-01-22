@@ -1,9 +1,23 @@
 import React from 'react';
-import { MainStyled } from './styled';
+import { 
+  MainStyled,
+  AsideBasketInfoStyled,
+  AsideFilterStyled,
+  ArticleStyled,
+ } from './styled';
+import Filter from '../Filter/Filter';
 const Main = () => {
   return (
     <MainStyled>
-      TEST
+      <AsideFilterStyled>
+        <Filter />
+      </AsideFilterStyled>
+      <ArticleStyled>
+        Article
+      </ArticleStyled>
+      <AsideBasketInfoStyled>
+        Basket
+      </AsideBasketInfoStyled>
     </MainStyled>
   )
 }
