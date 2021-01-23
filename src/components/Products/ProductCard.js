@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   ProductCardWrapper,
   ProductImage,
@@ -8,20 +9,28 @@ import {
   ProductName,
   ProductAddButton,
 } from './styled';
+import { addProduct } from '../../state/action';
 
-const ProductCard = ({ price, name }) => {
+const ProductCard = ({ product }) => {
+  const basket = useSelector((state) => state.baskets);
+  const dispatch = useDispatch();
+  const addToBasket = () => {
+    addProduct(basket, product, dispatch);
+  }
   return (
     <ProductCardWrapper>
       <ProductImageWrapper>
         <ProductImage />
       </ProductImageWrapper>
       <ProductPrice>
-        ₺ {price}
+        ₺ {product.price}
       </ProductPrice>
       <ProductName>
-        {name}
+        {product.name}
       </ProductName>
-      <ProductAddButton>
+      <ProductAddButton
+        onClick={addToBasket}
+      >
         Add
       </ProductAddButton>
     </ProductCardWrapper>
@@ -29,8 +38,7 @@ const ProductCard = ({ price, name }) => {
 }
 
 ProductCard.propTypes = {
-  price: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
+  product: PropTypes.object.isRequired,
 }
 
 export default ProductCard;

@@ -12,16 +12,16 @@ import Products from '../Products/Products';
 import Basket from '../Basket/Basket';
 
 const Main = () => {
-  const { myData } = useSelector((state) => state);
   const [sortingId, setSortingId] = useState(0);
   const [selectedBrands, setSelectedBrands] = useState([]);
   const [selectedTags, setSelectedTags] = useState([]);
+  const [itemType, setItemType] = useState('mug');
   const [pageNumber, setPageNumber] = useState(1);
   const dispatch = useDispatch();
   
   useEffect(() => {
-    getProducts(pageNumber, dispatch);
-  },[pageNumber])
+    getProducts(pageNumber, sortingId, dispatch, itemType, selectedBrands);
+  },[pageNumber, sortingId, itemType, selectedBrands])
 
   return (
     <MainStyled>
@@ -36,7 +36,11 @@ const Main = () => {
         />
       </AsideFilterStyled>
       <ArticleStyled>
-        <Products />
+        <Products 
+          setItemType={setItemType} 
+          itemType={itemType} 
+          setPageNumber={setPageNumber} 
+        />
       </ArticleStyled>
       <AsideBasketInfoStyled>
         <Basket />

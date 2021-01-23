@@ -1,5 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import ReactPaginate from 'react-paginate';
+import { PER_PAGE } from '../../constant';
 import {
   ProductSection,
   ProductHeader,
@@ -7,28 +9,60 @@ import {
   ProductNavigation,
 } from './styled';
 import ProductCard from './ProductCard';
+import PaginationButton from './PaginationButton';
+import './pagination.css';
 
-const Products = () => {
+const Products = ({ setItemType, itemType, setPageNumber }) => {
   const products = useSelector((state) => state.products);
+  const totalProducts = useSelector((state) => state.totalProduct);
+
+  const calculateTotalPage = () => {
+    const totalPage = Math.ceil(totalProducts / PER_PAGE);
+    return totalPage;
+  }
+
+  const handlePageClick = (data) => {
+    setPageNumber(data.selected + 1);
+  }
   return (
     <>
       <ProductHeader>Products</ProductHeader>
       <ProductNavigation>
-        <ProductNavButton color="#F2F0FD" bgColor="#1EA4CE">
+        <ProductNavButton 
+          onClick={() => setItemType('mug')} 
+          color={(itemType === "mug") ? "#F2F0FD" : "#1EA4CE"} 
+          bgColor={(itemType === "mug") ? "#1EA4CE" : "#F2F0FD"} 
+        >
           mug
         </ProductNavButton>
-        <ProductNavButton color="#1EA4CE" bgColor="#F2F0FD">
+        <ProductNavButton 
+          onClick={() => setItemType('shirt')} 
+          color={(itemType === "shirt") ? "#F2F0FD" : "#1EA4CE"} 
+          bgColor={(itemType === "shirt") ? "#1EA4CE" : "#F2F0FD"}
+        >
           shirt
         </ProductNavButton>
       </ProductNavigation>
       <ProductSection>
-        {products && products.map((product) => 
-          <ProductCard 
-            name={product.name} 
-            price={product.price} 
-          />  
+        {products && products.map((product, index) => 
+          <ProductCard key={index} product={product}  />  
         )}
       </ProductSection>
+
+      <ReactPaginate
+          previousLabel={<PaginationButton name="Prev" />}
+          nextLabel={<PaginationButton name="Next" />}
+          breakLabel={'...'}
+          breakClassName={'break-me'}
+          pageCount={calculateTotalPage()}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={4}
+          onPageChange={handlePageClick}
+          containerClassName={'pagination'}
+          subContainerClassName={'pages pagination'}
+          activeClassName={'active'}
+        />
+
     </>
   );
 }

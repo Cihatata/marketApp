@@ -6,6 +6,7 @@ const ProductSection = styled.section`
   background: #fff;
   flex-wrap: wrap;
   display: flex;
+  margin-bottom: 32px;
 `;
 
 const ProductHeader = styled.h4`
@@ -33,6 +34,7 @@ const ProductNavButton = styled.button`
   line-height: 18px;
   border: none;
   border-radius: 2px;
+  transition: .5s all;
 `;
 
 const ProductCardWrapper = styled.article`

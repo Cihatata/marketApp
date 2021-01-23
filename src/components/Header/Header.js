@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { 
   HeaderBar, 
   HeaderMain, 
@@ -8,7 +9,12 @@ import {
 } from './styled';
 import './header.css';
 
-const Header = () => {
+const Header = ({ sumPrice }) => {
+  // const {askets} = useSelector((state) => state)
+  // const [pr , setPr] = useState(price);
+  // useEffect(() => {
+  //   setPr(price)
+  // }, [price])
   return (
     <HeaderBar>
       <HeaderMain>
@@ -21,7 +27,7 @@ const Header = () => {
         <HeaderItem>
             <HeaderBasket>
               <img src="./Group.svg" alt=""/>
-              <span className='header-price'>₺ 39,97</span>
+              <span className='header-price'>₺ {sumPrice}</span>
             </HeaderBasket>
         </HeaderItem>
       </HeaderMain>

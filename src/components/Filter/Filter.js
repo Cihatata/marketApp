@@ -91,9 +91,9 @@ const Filter = (props) => {
             {Brands && searchBrand(searchValue.brand).map((item, index) =>
               <Checkbox
                 tabIndex={parseInt(`-${index}`)}
-                key={item.account}
+                key={item.slug}
                 header={item.name}
-                id={item.account}
+                id={item.slug}
                 selectedBox={selectedBrands}
                 selectBox={selectBrand}
               />
