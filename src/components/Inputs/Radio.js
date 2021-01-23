@@ -4,14 +4,14 @@ import {
   LabelStyled,
   RadioBox,
   RadioInput,
-  RadioWrapper,
+  RadioAndCheckboxWrapper,
   LabelHeader,
 } from './styled';
 
 const Radio = ({ header, id, sortingId, setSortingId }) => {
   return (
     <LabelStyled>
-      <RadioWrapper>
+      <RadioAndCheckboxWrapper>
         <RadioInput 
           checked={sortingId === id} 
           value={id} 
@@ -24,7 +24,7 @@ const Radio = ({ header, id, sortingId, setSortingId }) => {
             <path d="M9 1L3.5 6L1 3.72727" stroke="#1EA4CE" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>}
         </RadioBox>
-      </RadioWrapper>
+      </RadioAndCheckboxWrapper>
       <LabelHeader>{header}</LabelHeader>
     </LabelStyled>
   );
