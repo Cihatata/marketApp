@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import { sm, xl } from '../../constant';
 const ProductSection = styled.section`
   width: 100%;
   padding: 20px;
@@ -37,20 +37,37 @@ const ProductNavButton = styled.button`
   transition: .5s all;
 `;
 
+const ProductNavButtonMobile = styled(ProductNavButton)`
+  display: block;
+  @media (${xl}) {
+    display: none;
+  }
+`
+
 const ProductCardWrapper = styled.article`
-  // width: 100%;
-  width: calc(25% - 16px);
+  width: calc(50% - 16px);
   display: inline-flex;
   flex-direction: column;
   margin-bottom: 20px;
-  // &:not(:last-child){
-  //   margin-bottom: 20px;
-  // }
-  &:not(:nth-child(4n)) {
+  &:not(:nth-child(2n)) {
     margin-right: 20px; 
   }
   position: relative;
   justify-content: space-between;
+  @media (${sm}) {
+    width: calc(25% - 16px);
+    display: inline-flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    // &:not(:last-child){
+    //   margin-bottom: 20px;
+    // }
+    &:not(:nth-child(4n)) {
+      margin-right: 20px; 
+    }
+    position: relative;
+    justify-content: space-between;
+  }
 `;
 
 const ProductImageWrapper = styled.div`
@@ -100,7 +117,7 @@ const ProductAddButton = styled.button`
   justify-content: center;
   padding-top:1px;
   padding-bottom: 1px;
-`
+`;
 
 export {
   ProductSection,
@@ -113,4 +130,5 @@ export {
   ProductPrice,
   ProductName,
   ProductAddButton,
+  ProductNavButtonMobile,
 }

@@ -60,7 +60,6 @@ const createFetchUrl = (pageNumber, sortingId, itemType, brands) => {
       FETCH_URL = FETCH_URL.concat(`&manufacturer=${brand}`);
     })
   }
-  console.log(FETCH_URL);
   return FETCH_URL;
 }
 

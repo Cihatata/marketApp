@@ -7,12 +7,22 @@ import {
   ProductHeader,
   ProductNavButton,
   ProductNavigation,
+  ProductNavButtonMobile,
 } from './styled';
 import ProductCard from './ProductCard';
 import PaginationButton from './PaginationButton';
 import './pagination.css';
 
-const Products = ({ setItemType, itemType, setPageNumber }) => {
+const Products = (props) => {
+  const {
+    setItemType,
+    itemType,
+    setPageNumber,
+    isClickBasket,
+    setIsClickBasket,
+    isClickFilter,
+    setIsClickFilter,
+  } = props;
   const products = useSelector((state) => state.products);
   const totalProducts = useSelector((state) => state.totalProduct);
 
@@ -28,40 +38,54 @@ const Products = ({ setItemType, itemType, setPageNumber }) => {
     <>
       <ProductHeader>Products</ProductHeader>
       <ProductNavigation>
-        <ProductNavButton 
-          onClick={() => setItemType('mug')} 
-          color={(itemType === "mug") ? "#F2F0FD" : "#1EA4CE"} 
-          bgColor={(itemType === "mug") ? "#1EA4CE" : "#F2F0FD"} 
+        <ProductNavButton
+          onClick={() => setItemType('mug')}
+          color={(itemType === "mug") ? "#F2F0FD" : "#1EA4CE"}
+          bgColor={(itemType === "mug") ? "#1EA4CE" : "#F2F0FD"}
         >
           mug
         </ProductNavButton>
-        <ProductNavButton 
-          onClick={() => setItemType('shirt')} 
-          color={(itemType === "shirt") ? "#F2F0FD" : "#1EA4CE"} 
+        <ProductNavButton
+          onClick={() => setItemType('shirt')}
+          color={(itemType === "shirt") ? "#F2F0FD" : "#1EA4CE"}
           bgColor={(itemType === "shirt") ? "#1EA4CE" : "#F2F0FD"}
         >
           shirt
         </ProductNavButton>
+        <ProductNavButtonMobile
+          bgColor="#5d3ebc"
+          color="#fff"
+          onClick={() => setIsClickFilter(true)}
+        >
+          Filters
+        </ProductNavButtonMobile>
+        <ProductNavButtonMobile
+          bgColor="#5d3ebc"
+          color="#fff"
+          onClick={() => setIsClickBasket(true)}
+        >
+          Basket
+        </ProductNavButtonMobile>
       </ProductNavigation>
       <ProductSection>
-        {products && products.map((product, index) => 
-          <ProductCard key={index} product={product}  />  
+        {products && products.map((product, index) =>
+          <ProductCard key={index} product={product} />
         )}
       </ProductSection>
 
       <ReactPaginate
-          previousLabel={<PaginationButton name="Prev" />}
-          nextLabel={<PaginationButton name="Next" />}
-          breakLabel={'...'}
-          breakClassName={'break-me'}
-          pageCount={calculateTotalPage()}
-          marginPagesDisplayed={2}
-          pageRangeDisplayed={4}
-          onPageChange={handlePageClick}
-          containerClassName={'pagination'}
-          subContainerClassName={'pages pagination'}
-          activeClassName={'active'}
-        />
+        previousLabel={<PaginationButton name="Prev" />}
+        nextLabel={<PaginationButton name="Next" />}
+        breakLabel={'...'}
+        breakClassName={'break-me'}
+        pageCount={calculateTotalPage()}
+        marginPagesDisplayed={2}
+        pageRangeDisplayed={4}
+        onPageChange={handlePageClick}
+        containerClassName={'pagination'}
+        subContainerClassName={'pages pagination'}
+        activeClassName={'active'}
+      />
 
     </>
   );

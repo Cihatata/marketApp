@@ -5,6 +5,7 @@ import {
   FilterHeader
 } from './styled';
 import { CheckboxContainer } from '../Inputs/styled';
+import { ProductNavButtonMobile } from '../Products/styled';
 import Radio from '../Inputs/Radio';
 import Search from '../Inputs/Search';
 import Checkbox from '../Inputs/Checkbox';
@@ -20,6 +21,7 @@ const Filter = (props) => {
     setSelectedBrands,
     selectedTags,
     setSelectedTags,
+    setIsClickFilter,
   } = props; 
   const [searchValue, setSearchValue] = useState({
     tag: '',
@@ -64,6 +66,12 @@ const Filter = (props) => {
   }
   return (
     <>
+      <ProductNavButtonMobile
+        color="#fff"
+        bgColor="#222"  
+        onClick={() => setIsClickFilter(false)}>
+        Close
+      </ProductNavButtonMobile>
       <FilterItem>
         <FilterHeader>Sorting</FilterHeader>
         <FilterCardWrapper>
