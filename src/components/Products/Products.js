@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import {
   ProductSection,
   ProductHeader,
@@ -8,6 +9,7 @@ import {
 import ProductCard from './ProductCard';
 
 const Products = () => {
+  const products = useSelector((state) => state.products);
   return (
     <>
       <ProductHeader>Products</ProductHeader>
@@ -20,12 +22,12 @@ const Products = () => {
         </ProductNavButton>
       </ProductNavigation>
       <ProductSection>
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
+        {products && products.map((product) => 
+          <ProductCard 
+            name={product.name} 
+            price={product.price} 
+          />  
+        )}
       </ProductSection>
     </>
   );

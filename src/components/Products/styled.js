@@ -40,12 +40,15 @@ const ProductCardWrapper = styled.article`
   width: calc(25% - 16px);
   display: inline-flex;
   flex-direction: column;
-  &:not(:last-child){
-    margin-bottom: 20px;
-  }
+  margin-bottom: 20px;
+  // &:not(:last-child){
+  //   margin-bottom: 20px;
+  // }
   &:not(:nth-child(4n)) {
     margin-right: 20px; 
   }
+  position: relative;
+  justify-content: space-between;
 `;
 
 const ProductImageWrapper = styled.div`

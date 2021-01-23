@@ -26,6 +26,7 @@ const AsideBasketInfoStyled = styled.aside`
   margin-left: 16px;
   flex: 1 1 0%;
   display: flex;
+  flex-direction: column;
 `
 
 export {

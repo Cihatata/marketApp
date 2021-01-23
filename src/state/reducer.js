@@ -1,12 +1,16 @@
+import * as Actions from '../constant';
+
 const initialState = {
-  data:[]
+  products:[],
+  myData: 'test'
 }
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'xx':
+    case Actions.GET_PRODUCTS:
       return {
-        ...state
+        ...state,
+        products: [...action.payload]
       }
     default:
       return state;

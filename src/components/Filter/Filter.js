@@ -12,10 +12,15 @@ import sortingElements from './SortingElements';
 import Brands from './Brands';
 import Tags from './Tags';
 
-const Filter = () => {
-  const [sortingId, setSortingId] = useState(0);
-  const [selectedBrands, setSelectedBrands] = useState([]);
-  const [selectedTags, setSelectedTags] = useState([]);
+const Filter = (props) => {
+  const {
+    sortingId,
+    setSortingId,
+    selectedBrands,
+    setSelectedBrands,
+    selectedTags,
+    setSelectedTags,
+  } = props; 
   const [searchValue, setSearchValue] = useState({
     tag: '',
     brand: '',

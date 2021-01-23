@@ -7,7 +7,7 @@ import {
 } from './styled';
 
 const Search = ({ handleSearch, searchValue, placeholder, name }) => {
-  console.log(placeholder);
+
   return (
     <SearchWrapper>
       <SearchHeaderInput>
