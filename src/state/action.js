@@ -9,8 +9,14 @@ import {
 
 
 // Fetch Data
-export const getProducts = async (pageNumber = 1, sortingId = 0, dispatch, itemType = "mug", brands = []) => {
-  const FETCH_URL = createFetchUrl(pageNumber, sortingId, itemType, brands);
+export const getProducts = async (
+  pageNumber = 1, 
+  sortingId = 0, 
+  dispatch, itemType = "mug", 
+  brands = [], 
+  tags = []
+  ) => {
+  const FETCH_URL = createFetchUrl(pageNumber, sortingId, itemType, brands, tags);
   const res = await fetch(FETCH_URL);
   dispatch({type: SET_TOTAL_PRODUCT, payload: res.headers.get("X-Total-Count")})
   const raw = await res.json();
@@ -52,7 +58,7 @@ export const addProduct = (basket, selectedProduct, dispatch) => {
 }
 
 //Create Fetch Url by Filter Value
-const createFetchUrl = (pageNumber, sortingId, itemType, brands) => {
+const createFetchUrl = (pageNumber, sortingId, itemType, brands, tags) => {
   let  FETCH_URL = `${API_URL}/products?_page=${pageNumber}&_limit=${PER_PAGE}`
   const { sortBy, ascOrDesc } = sortingProducts(sortingId);
   FETCH_URL = FETCH_URL.concat(`&_sort=${sortBy}&_order=${ascOrDesc}`);
@@ -61,6 +67,9 @@ const createFetchUrl = (pageNumber, sortingId, itemType, brands) => {
     brands.forEach((brand) => {
       FETCH_URL = FETCH_URL.concat(`&manufacturer=${brand}`);
     })
+  }
+  if (tags.length) {
+    FETCH_URL = FETCH_URL.concat(`&tags_like=${tags.map((tag) => `${tag}`)}`)
   }
   return FETCH_URL;
 }

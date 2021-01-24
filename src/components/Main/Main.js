@@ -26,8 +26,8 @@ const Main = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    getProducts(pageNumber, sortingId, dispatch, itemType, selectedBrands);
-  }, [pageNumber, sortingId, itemType, selectedBrands])
+    getProducts(pageNumber, sortingId, dispatch, itemType, selectedBrands, selectedTags);
+  }, [pageNumber, sortingId, itemType, selectedBrands, selectedTags])
 
   return (
     <MainStyled>
