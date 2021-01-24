@@ -119,7 +119,7 @@ const Filter = (props) => {
             searchValue={searchValue.tag}
             name="tag"
           />
-          <CheckboxContainer data-testid="brand-label-wrapper">
+          <CheckboxContainer data-testid="tag-label-wrapper">
             {Tags && searchTag(searchValue.tag).map((item, index) =>
               <Checkbox
                 tabIndex={parseInt(`-${index}`)}

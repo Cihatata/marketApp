@@ -26,7 +26,8 @@
     "eject": "react-scripts eject",
     "serve": "json-server -p 5000 db.json",
     "dev": "concurrently \"npm run serve \" \"npm run start\"",
-    "cypress": "cypress open"
+    "cypress": "cypress open",
+    "cypress:headless": "cypress run --browser chrome --headless"
   },
   "eslintConfig": {
     "extends": [
