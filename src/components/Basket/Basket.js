@@ -31,13 +31,13 @@ const Basket = () => {
     return sum;
   }
   return (
-    <BasketWrapper>
+    <BasketWrapper data-testid="basket">
       {(baskets.length)
         ?
         baskets.map((basket, index) => {
           return (
             <div key={index}>
-              <BasketItem>
+              <BasketItem data-testid={`basket-item-${index}`}>
                 <BasketItemInfo>
                   <BasketItemName>
                     {basket.name}
@@ -71,7 +71,7 @@ const Basket = () => {
         )
         : <div>Empty Baskets</div>
       }
-      <BasketSumPriceButton>
+      <BasketSumPriceButton data-testid="button-sumprice">
         ₺ {basketsSumPrice().toFixed(2)}
       </BasketSumPriceButton>
     </BasketWrapper>

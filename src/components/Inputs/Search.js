@@ -12,6 +12,7 @@ const Search = ({ handleSearch, searchValue, placeholder, name }) => {
     <SearchWrapper>
       <SearchHeaderInput>
         <SearchInput
+          data-testid={`input-search-${name}`}
           placeholder={placeholder}
           value={searchValue}
           onChange={handleSearch}

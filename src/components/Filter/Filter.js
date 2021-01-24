@@ -74,8 +74,8 @@ const Filter = (props) => {
       </ProductNavButtonMobile>
       <FilterItem>
         <FilterHeader>Sorting</FilterHeader>
-        <FilterCardWrapper>
-          {sortingElements.map((item) =>
+        <FilterCardWrapper data-testid="sorting">
+          {sortingElements.map((item, index) =>
             <Radio
               sortingId={sortingId}
               setSortingId={setSortingId}
@@ -95,7 +95,7 @@ const Filter = (props) => {
             placeholder="Search Brand"
             name="brand"
           />
-          <CheckboxContainer>
+          <CheckboxContainer data-testid="brand-label-wrapper">
             {Brands && searchBrand(searchValue.brand).map((item, index) =>
               <Checkbox
                 tabIndex={parseInt(`-${index}`)}
@@ -113,12 +113,13 @@ const Filter = (props) => {
         <FilterHeader>Tags</FilterHeader>
         <FilterCardWrapper>
           <Search
+            data-testid="input-search-tag"
             placeholder="Search Tag"
             handleSearch={handleSearchValue}
             searchValue={searchValue.tag}
             name="tag"
           />
-          <CheckboxContainer>
+          <CheckboxContainer data-testid="brand-label-wrapper">
             {Tags && searchTag(searchValue.tag).map((item, index) =>
               <Checkbox
                 tabIndex={parseInt(`-${index}`)}

@@ -43,9 +43,11 @@ export const addProduct = (basket, selectedProduct, dispatch) => {
   if (!isExist) {
     // Add if it is not in the basket
     dispatch({ type: ADD_BASKET, payload: selectedProduct })
+    return {status: 'success', message: 'Product added to basket!'};
+
   } else {
     //  product exist
-    return false
+    return {status: 'info', message: 'The product is already in the basket'};
   }
 }
 

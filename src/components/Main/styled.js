@@ -1,14 +1,17 @@
 import styled from 'styled-components';
-import { sm, xl } from '../../constant';
+import { xl } from '../../constant';
 const MainStyled = styled.main`
   width: 100%;
   max-width: 1232px;
-  margin-top: 40px;
   margin-left: auto;
   margin-right: auto;
   display: flex;
   position: relative;
   overflow-x: hidden;
+  margin-top: 0;
+  @media (${xl}) { 
+    margin-top: 40px
+  }
 `;
 
 const AsideFilterStyled = styled.aside`

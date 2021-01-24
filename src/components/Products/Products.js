@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import ReactPaginate from 'react-paginate';
+import { ToastContainer } from 'react-toastify' 
 import { PER_PAGE } from '../../constant';
 import {
   ProductSection,
@@ -18,9 +19,7 @@ const Products = (props) => {
     setItemType,
     itemType,
     setPageNumber,
-    isClickBasket,
     setIsClickBasket,
-    isClickFilter,
     setIsClickFilter,
   } = props;
   const products = useSelector((state) => state.products);
@@ -37,8 +36,20 @@ const Products = (props) => {
   return (
     <>
       <ProductHeader>Products</ProductHeader>
+      <ToastContainer 
+        position="top-left"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <ProductNavigation>
         <ProductNavButton
+          data-testid="button-mug"
           onClick={() => setItemType('mug')}
           color={(itemType === "mug") ? "#F2F0FD" : "#1EA4CE"}
           bgColor={(itemType === "mug") ? "#1EA4CE" : "#F2F0FD"}
@@ -46,6 +57,7 @@ const Products = (props) => {
           mug
         </ProductNavButton>
         <ProductNavButton
+          data-testid="button-shirt"
           onClick={() => setItemType('shirt')}
           color={(itemType === "shirt") ? "#F2F0FD" : "#1EA4CE"}
           bgColor={(itemType === "shirt") ? "#1EA4CE" : "#F2F0FD"}
@@ -53,6 +65,7 @@ const Products = (props) => {
           shirt
         </ProductNavButton>
         <ProductNavButtonMobile
+          data-testid="button-filters"
           bgColor="#5d3ebc"
           color="#fff"
           onClick={() => setIsClickFilter(true)}
@@ -60,6 +73,7 @@ const Products = (props) => {
           Filters
         </ProductNavButtonMobile>
         <ProductNavButtonMobile
+          data-testid="button-basket"
           bgColor="#5d3ebc"
           color="#fff"
           onClick={() => setIsClickBasket(true)}
@@ -67,7 +81,7 @@ const Products = (props) => {
           Basket
         </ProductNavButtonMobile>
       </ProductNavigation>
-      <ProductSection>
+      <ProductSection data-testid="products">
         {products && products.map((product, index) =>
           <ProductCard key={index} product={product} />
         )}

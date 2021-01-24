@@ -9,17 +9,18 @@ import {
 import { ProductNavButtonMobile } from '../Products/styled';
 import { getProducts } from '../../state/action';
 import Filter from '../Filter/Filter';
-// import Products from '../Products/Products';
 import Basket from '../Basket/Basket';
-
+import 'react-toastify/dist/ReactToastify.css';
 const Products = React.lazy(() => import('../Products/Products'));
 
 const Main = () => {
+  //Filter state
   const [sortingId, setSortingId] = useState(0);
   const [selectedBrands, setSelectedBrands] = useState([]);
   const [selectedTags, setSelectedTags] = useState([]);
   const [itemType, setItemType] = useState('mug');
   const [pageNumber, setPageNumber] = useState(1);
+  // if the screen is smaller than 1024px // Sidebar open close state
   const [isClickFilter, setIsClickFilter] = useState(false);
   const [isClickBasket, setIsClickBasket] = useState(false);
   const dispatch = useDispatch();

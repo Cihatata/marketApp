@@ -10,12 +10,15 @@ import {
   ProductAddButton,
 } from './styled';
 import { addProduct } from '../../state/action';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ProductCard = ({ product }) => {
   const basket = useSelector((state) => state.baskets);
   const dispatch = useDispatch();
   const addToBasket = () => {
-    addProduct(basket, product, dispatch);
+    const res = addProduct(basket, product, dispatch);
+    toast[res.status](res.message);
   }
   return (
     <ProductCardWrapper>

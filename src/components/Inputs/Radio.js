@@ -10,7 +10,7 @@ import {
 
 const Radio = ({ header, id, sortingId, setSortingId }) => {
   return (
-    <LabelStyled>
+    <LabelStyled data-testid={`sorting-radio-${id}`}>
       <RadioAndCheckboxWrapper>
         <RadioInput 
           checked={sortingId === id} 
