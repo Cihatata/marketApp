@@ -16,7 +16,7 @@ const Header = ({ sumPrice }) => {
   //   setPr(price)
   // }, [price])
   return (
-    <HeaderBar>
+    <HeaderBar aria-label="header">
       <HeaderMain>
         <HeaderItem />
         <HeaderItem>

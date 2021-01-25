@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
 import { updateBasket } from '../../state/action';
 import {
   BasketWrapper,
@@ -12,24 +13,35 @@ import {
   BasketItemCounterButton,
   BasketItemDivider,
   BasketSumPriceButton,
+  ButtonWrapper,
 } from './styled';
-import { SET_PRICE } from '../../constant';
+import { SET_PRICE, PAY } from '../../constant';
 
 const Basket = () => {
   const baskets = useSelector((state) => state.baskets);
   const dispatch = useDispatch()
 
   const changeProductNumber = (slug, process) => {
-    updateBasket(baskets, dispatch, slug, process);
+    const res = updateBasket(baskets, dispatch, slug, process);
+    toast[res.status](res.message);
+
   }
   const basketsSumPrice = () => {
     let sum = 0;
     baskets.forEach((product) => {
       sum = sum + (product.price * product.number)
     })
-    dispatch({type: SET_PRICE, payload: sum })
+    dispatch({ type: SET_PRICE, payload: sum })
     return sum;
   }
+
+  const pay = () => {
+    if (baskets.length) {
+      dispatch({ type: PAY });
+      toast.success('Payment Complete');
+    }
+  }
+
   return (
     <BasketWrapper data-testid="basket">
       {(baskets.length)
@@ -71,9 +83,14 @@ const Basket = () => {
         )
         : <div>Empty Baskets</div>
       }
-      <BasketSumPriceButton data-testid="button-sumprice">
-        ₺ {basketsSumPrice().toFixed(2)}
-      </BasketSumPriceButton>
+      <ButtonWrapper>
+        <BasketSumPriceButton
+          data-testid="button-sumprice"
+          onClick={pay}
+        >
+          ₺ {basketsSumPrice().toFixed(2)}
+        </BasketSumPriceButton>
+      </ButtonWrapper>
     </BasketWrapper>
   )
 }

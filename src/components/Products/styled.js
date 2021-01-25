@@ -78,7 +78,7 @@ const ProductImageWrapper = styled.div`
   height: 124px;
   margin-bottom: 8px;
 `
-const ProductImage = styled.div`
+const ProductImage = styled.img`
   background: #c4c4c4;
   width: 100%;
   height: 100%;

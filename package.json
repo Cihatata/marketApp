@@ -24,7 +24,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "serve": "json-server -p 5000 db.json",
+    "serve": "json-server -p 5000 db1.json",
     "dev": "concurrently \"npm run serve \" \"npm run start\"",
     "cypress": "cypress open",
     "cypress:headless": "cypress run --browser chrome --headless"

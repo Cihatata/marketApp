@@ -23,7 +23,7 @@ const ProductCard = ({ product }) => {
   return (
     <ProductCardWrapper>
       <ProductImageWrapper>
-        <ProductImage />
+        <ProductImage src="https://images.spoonacular.com/file/wximages/423186-312x231.png" alt="food-img"/>
       </ProductImageWrapper>
       <ProductPrice>
         ₺ {product.price}

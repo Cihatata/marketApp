@@ -19,7 +19,6 @@ const Tags = [
   "Bear",
   "Sunset",
   "Beach",
-  "Ocean"
 ]
 
 export default Tags;

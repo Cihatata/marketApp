@@ -86,7 +86,15 @@ const BasketSumPriceButton = styled.button`
   font-size: 14px;
   line-height: 16px;
   color: #1ea4ce;
-  float: right;
+  &:hover{
+    color: #fff;
+    background-color: #1ea4ce;
+  }
+`
+const ButtonWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 `
 
 
@@ -101,4 +109,5 @@ export {
   BasketItemCounterButton,
   BasketItemDivider,
   BasketSumPriceButton,
+  ButtonWrapper
 }

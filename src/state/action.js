@@ -7,7 +7,6 @@ import {
   SET_TOTAL_PRODUCT,
 } from '../constant';
 
-
 // Fetch Data
 export const getProducts = async (
   pageNumber = 1, 
@@ -26,20 +25,28 @@ export const getProducts = async (
 // Click + and -
 export const updateBasket = (products, dispatch, slug, process) => {
   const index = products.findIndex((product) => product.slug === slug);
+  let toasterMessage = {status:'', message:''};
   if (process === "+") {
     // increase product number
     products[index].number = products[index].number + 1;
+    toasterMessage.status = "info";
+    toasterMessage.message = "increase product number"
   } else {
     if (products[index].number !== 1) {
       // decrease product number
       products[index].number = products[index].number - 1;
+      toasterMessage.status = "info";
+      toasterMessage.message = "decrease product number"
     } else {
       //Remove from basket
       products.splice(index, 1);
+      toasterMessage.status= "error";
+      toasterMessage.message= "product removed from basket";
     }
   }
   // Update Basket
   dispatch({ type: UPDATE_BASKET, payload: products });
+  return toasterMessage;
 }
 
 export const addProduct = (basket, selectedProduct, dispatch) => {
@@ -49,11 +56,11 @@ export const addProduct = (basket, selectedProduct, dispatch) => {
   if (!isExist) {
     // Add if it is not in the basket
     dispatch({ type: ADD_BASKET, payload: selectedProduct })
-    return {status: 'success', message: 'Product added to basket!'};
+    return {status: 'info', message: 'Product added to basket!'};
 
   } else {
     //  product exist
-    return {status: 'info', message: 'The product is already in the basket'};
+    return {status: 'warning', message: 'The product is already in the basket'};
   }
 }
 
@@ -69,6 +76,8 @@ const createFetchUrl = (pageNumber, sortingId, itemType, brands, tags) => {
     })
   }
   if (tags.length) {
+    //sort required array params / if i cant sort, data is coming wrong
+    tags.sort();
     FETCH_URL = FETCH_URL.concat(`&tags_like=${tags.map((tag) => `${tag}`)}`)
   }
   return FETCH_URL;

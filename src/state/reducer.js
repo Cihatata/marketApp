@@ -34,6 +34,13 @@ const reducer = (state = initialState, action) => {
         ...state,
         totalProduct: action.payload
       }
+    case Actions.PAY: {
+      return {
+        ...state,
+        baskets : [],
+        sumPrice: 0
+      }
+    }
     default:
       return state;
   }

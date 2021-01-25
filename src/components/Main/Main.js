@@ -30,8 +30,8 @@ const Main = () => {
   }, [pageNumber, sortingId, itemType, selectedBrands, selectedTags])
 
   return (
-    <MainStyled>
-      <AsideFilterStyled isClick={isClickFilter}>
+    <MainStyled aria-label="main">
+      <AsideFilterStyled isClick={isClickFilter} aria-label="filter-section">
         <Filter
           setIsClickFilter={setIsClickFilter}
           style={{ background: 'red' }}
@@ -43,7 +43,7 @@ const Main = () => {
           setSelectedTags={setSelectedTags}
         />
       </AsideFilterStyled>
-      <ArticleStyled>
+      <ArticleStyled aria-label="product-section">
         <Suspense fallback={<div>Yukleniyor</div>}>
           <Products
             isClickBasket={isClickBasket}
@@ -55,8 +55,8 @@ const Main = () => {
             setPageNumber={setPageNumber}
           />
         </Suspense>
-      </ArticleStyled>
-      <AsideBasketInfoStyled isClick={isClickBasket}>
+      </ArticleStyled >
+      <AsideBasketInfoStyled aria-label="basket-section" isClick={isClickBasket}>
         <ProductNavButtonMobile
           color="#fff"
           bgColor="#222"
