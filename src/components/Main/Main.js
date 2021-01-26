@@ -22,6 +22,7 @@ const Main = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    // if the filter or page number changes, fetch request 
     getProducts(pageNumber, filter, dispatch);
   }, [pageNumber, filter])
 
