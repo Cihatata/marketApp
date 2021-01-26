@@ -2,7 +2,7 @@
 This project is like an e-commerce frontend page. You can filter the products and add them to the basket. Finally you can buy.
 
 ## Demo
-
+![](./docs/marketapp.png)
 ![](./docs/marketapp.gif)
 ## Features
 - Fetch Data from API
