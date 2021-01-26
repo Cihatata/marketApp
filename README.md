@@ -29,6 +29,12 @@ npm install
 npm run dev
 ```
 
+## Test
+```
+npm run cypress:headless
+npm run cypress
+```
+
 ## Comment
 I reviewed the GetirYemek home page before starting the project. I analyzed the rest api requests. Firstly I coded UI components with styled-components. Then I managed states with redux. I fetched data and stored data in Redux state. I managed data using Redux hooks. I refactored after I finished the project. You can see in my old commits. I wrote a test with cypress for the first time.
 

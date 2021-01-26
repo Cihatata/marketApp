@@ -10,14 +10,14 @@ import {
   ProductAddButton,
 } from './styled';
 import { addProduct } from '../../state/action';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const ProductCard = ({ product }) => {
   const basket = useSelector((state) => state.baskets);
   const dispatch = useDispatch();
 
-  // Create Action
+  // Create Action - add product to basket
   const addToBasket = () => {
     const res = addProduct(basket, product, dispatch);
     toast[res.status](res.message);
@@ -36,7 +36,7 @@ const ProductCard = ({ product }) => {
       <ProductName>
         {product.name}
       </ProductName>
-      <ProductAddButton onClick={addToBasket}>
+      <ProductAddButton onClick={addToBasket} data-testid="button-add">
         Add
       </ProductAddButton>
     </ProductCardWrapper>
