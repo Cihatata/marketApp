@@ -12,7 +12,7 @@ export const fetchRequest = async (pageNumber, sortingId, itemType, brands, tags
 // Create Request Url by selected Filter
 const createFetchUrl = (pageNumber, sortingId, itemType, brands, tags) => {
   let  FETCH_URL = `${API_URL}/products?_page=${pageNumber}&_limit=${PER_PAGE}`
-  const { sortBy, ascOrDesc } = sortingProducts(sortingId = 0);
+  const { sortBy, ascOrDesc } = sortingProducts(sortingId);
   //Sorting query
   FETCH_URL = FETCH_URL.concat(`&_sort=${sortBy}&_order=${ascOrDesc}`);
   // Mug or shirt query
