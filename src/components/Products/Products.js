@@ -1,7 +1,8 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import ReactPaginate from 'react-paginate';
-import { ToastContainer } from 'react-toastify' 
+import { ToastContainer } from 'react-toastify'
+import PropTypes from 'prop-types'
 import { PER_PAGE } from '../../constant';
 import {
   ProductSection,
@@ -13,21 +14,23 @@ import {
 import ProductCard from './ProductCard';
 import PaginationButton from './PaginationButton';
 import './pagination.css';
+import { SET_FILTER } from '../../state/types';
 
 const Products = (props) => {
-  const {
-    setItemType,
-    itemType,
-    setPageNumber,
-    setIsClickBasket,
-    setIsClickFilter,
-  } = props;
-  const products = useSelector((state) => state.products);
-  const totalProducts = useSelector((state) => state.totalProduct);
+
+  const { setPageNumber, setIsClickBasket, setIsClickFilter } = props;
+  const {products, totalProduct, filter} = useSelector((state) => state);
+  const dispatch = useDispatch();
 
   const calculateTotalPage = () => {
-    const totalPage = Math.ceil(totalProducts / PER_PAGE);
+    const totalPage = Math.ceil(totalProduct / PER_PAGE);
     return totalPage;
+  }
+
+  // mug or shirt
+  const handleItemType = (e) => {
+    const { name, value } = e.target;
+    dispatch({ type: SET_FILTER, payload: { name, value } })
   }
 
   const handlePageClick = (data) => {
@@ -36,7 +39,7 @@ const Products = (props) => {
   return (
     <>
       <ProductHeader>Products</ProductHeader>
-      <ToastContainer 
+      <ToastContainer
         position="top-left"
         autoClose={5000}
         hideProgressBar={false}
@@ -50,17 +53,21 @@ const Products = (props) => {
       <ProductNavigation>
         <ProductNavButton
           data-testid="button-mug"
-          onClick={() => setItemType('mug')}
-          color={(itemType === "mug") ? "#F2F0FD" : "#1EA4CE"}
-          bgColor={(itemType === "mug") ? "#1EA4CE" : "#F2F0FD"}
+          onClick={handleItemType}
+          color={(filter.itemType === "mug") ? "#F2F0FD" : "#1EA4CE"}
+          bgColor={(filter.itemType === "mug") ? "#1EA4CE" : "#F2F0FD"}
+          name="itemType"
+          value="mug"
         >
           mug
         </ProductNavButton>
         <ProductNavButton
           data-testid="button-shirt"
-          onClick={() => setItemType('shirt')}
-          color={(itemType === "shirt") ? "#F2F0FD" : "#1EA4CE"}
-          bgColor={(itemType === "shirt") ? "#1EA4CE" : "#F2F0FD"}
+          onClick={handleItemType}
+          color={(filter.itemType === "shirt") ? "#F2F0FD" : "#1EA4CE"}
+          bgColor={(filter.itemType === "shirt") ? "#1EA4CE" : "#F2F0FD"}
+          name="itemType"
+          value="shirt"
         >
           shirt
         </ProductNavButton>
@@ -103,6 +110,12 @@ const Products = (props) => {
 
     </>
   );
+}
+
+Products.propTypes = {
+  setIsClickBasket: PropTypes.func.isRequired,
+  setPageNumber: PropTypes.func.isRequired,
+  setIsClickFilter: PropTypes.func.isRequired,
 }
 
 export default Products;

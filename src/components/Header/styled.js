@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { sm } from '../../constant'; 
-const HeaderBar = styled.header`
+const Bar = styled.header`
   width:100%;
   height: 65px;
   color: #fff;
@@ -12,7 +12,7 @@ const HeaderBar = styled.header`
   } 
 `;
 
-const HeaderMain = styled.div`
+const Main = styled.div`
   width: 100%;
   max-width: 1232px;
   margin: 0 auto;
@@ -21,7 +21,7 @@ const HeaderMain = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
-const HeaderItem = styled.div`
+const Item = styled.div`
   &:not(:first-child) {
     margin-left:15px;
   }
@@ -32,7 +32,7 @@ const HeaderItem = styled.div`
   display: flex;
 `;
 
-const HeaderLogo = styled.div`
+const Logo = styled.div`
   text-align: center;
   width: 100%;
   font-size: 24px;
@@ -40,7 +40,7 @@ const HeaderLogo = styled.div`
     font-size: 32px;
   } 
 `
-const HeaderBasket = styled.div`
+const Basket = styled.div`
   text-align: right;
   width: 90px;
   background-color: #147594;
@@ -54,12 +54,19 @@ const HeaderBasket = styled.div`
   @media(${sm}) {
     width: 130px;
   } 
+`;
+
+const Price =  styled.span`
+  margin-left: 8px;
 `
 
+
+
 export {
-  HeaderBar,
-  HeaderMain,
-  HeaderItem,
-  HeaderLogo,
-  HeaderBasket,
+  Bar,
+  Main,
+  Item,
+  Logo,
+  Basket,
+  Price
 };

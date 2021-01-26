@@ -1,37 +1,26 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { 
-  HeaderBar, 
-  HeaderMain, 
-  HeaderItem, 
-  HeaderLogo, 
-  HeaderBasket 
-} from './styled';
-import './header.css';
+import React  from 'react';
+import { useSelector } from 'react-redux'
+import * as Header_ from './styled';
 
-const Header = ({ sumPrice }) => {
-  // const {askets} = useSelector((state) => state)
-  // const [pr , setPr] = useState(price);
-  // useEffect(() => {
-  //   setPr(price)
-  // }, [price])
+const Header = () => {
+  const sumPrice = useSelector((state) => state.sumPrice);
   return (
-    <HeaderBar aria-label="header">
-      <HeaderMain>
-        <HeaderItem />
-        <HeaderItem>
-          <HeaderLogo>
+    <Header_.Bar aria-label="header">
+      <Header_.Main>
+        <Header_.Item />
+        <Header_.Item>
+          <Header_.Logo>
             Market
-          </HeaderLogo>
-        </HeaderItem>
-        <HeaderItem>
-            <HeaderBasket>
+          </Header_.Logo>
+        </Header_.Item>
+        <Header_.Item>
+            <Header_.Basket>
               <img src="./Group.svg" alt=""/>
-              <span className='header-price'>₺ {sumPrice}</span>
-            </HeaderBasket>
-        </HeaderItem>
-      </HeaderMain>
-    </HeaderBar>
+              <Header_.Price className='header-price'>₺ {sumPrice}</Header_.Price>
+            </Header_.Basket>
+        </Header_.Item>
+      </Header_.Main>
+    </Header_.Bar>
   );
 }
 

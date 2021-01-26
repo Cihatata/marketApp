@@ -5,7 +5,6 @@ import Footer from '../components/Footer/Footer';
 
 const Home = () => {
   
-  console.log('home render');
   return (
     <>
       <Header />

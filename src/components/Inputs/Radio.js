@@ -8,16 +8,16 @@ import {
   LabelHeader,
 } from './styled';
 
-const Radio = ({ header, id, sortingId, setSortingId }) => {
+const Radio = ({ header, id, sortingId, changeFilter }) => {
   return (
     <LabelStyled data-testid={`sorting-radio-${id}`}>
       <RadioAndCheckboxWrapper>
         <RadioInput 
           checked={sortingId === id} 
           value={id} 
-          onChange={(e) => setSortingId(Number(e.target.value)) } 
+          onChange={changeFilter}
           type="radio" 
-          name="sortType" 
+          name="sortingId" 
           tabIndex={0}
           aria-checked={sortingId === id}
         />

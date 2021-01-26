@@ -1,10 +1,16 @@
-import * as Actions from '../constant';
+import * as Actions from './types';
 
 const initialState = {
   products:[],
   baskets: [],
   sumPrice: 0,
   totalProduct: 1,
+  filter: {
+    sortingId: 0,
+    tags: [],
+    brands: [],
+    itemType: 'mug',
+  },
 }
 
 const reducer = (state = initialState, action) => {
@@ -41,6 +47,14 @@ const reducer = (state = initialState, action) => {
         sumPrice: 0
       }
     }
+    case Actions.SET_FILTER:
+      return {
+        ...state,
+        filter: {
+          ...state.filter,
+          [action.payload.name]: action.payload.value,
+        }
+      }
     default:
       return state;
   }

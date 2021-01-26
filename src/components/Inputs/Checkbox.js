@@ -9,7 +9,7 @@ import {
 } from './styled';
 
 
-const Checkbox = ({ header, id, selectedBox, selectBox, tabIndex }) => {
+const Checkbox = ({ header, id, selectedBox, selectBox, tabIndex, name }) => {
   const isSelected = () => {
     return selectedBox.includes(id)
   }
@@ -26,10 +26,11 @@ const Checkbox = ({ header, id, selectedBox, selectBox, tabIndex }) => {
           checked={isSelected()}
           type="checkbox"
           onChange={() => { }}
-          onClick={() => selectBox(Number(id) || id)}
+          onClick={selectBox}
           tabIndex={tabIndex}
           aria-checked={isSelected()}
           onKeyDown={enterPress}
+          name={name}
         />
         <CheckboxCheck bgColor={isSelected() ? '#1ea4ce' : '#fff'}>
           {isSelected() && <svg width="14" height="14" viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -48,6 +49,10 @@ Checkbox.propTypes = {
     PropTypes.string, // For Tag
     PropTypes.number  // For Brand
   ]),
+  tabIndex: PropTypes.number, //Input attribute
+  name: PropTypes.string.isRequired, //Input attribute
+  selectedBox: PropTypes.array.isRequired, // selected Elements Array
+  selectBox: PropTypes.func.isRequired, // handleChange
 }
 
 export default Checkbox;

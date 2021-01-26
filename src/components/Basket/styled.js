@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const BasketWrapper = styled.section`
+const Wrapper = styled.section`
   border-radius: 2px;
   border: 8px solid #1EA4CE;
   width: 100%;
@@ -8,7 +8,7 @@ const BasketWrapper = styled.section`
   height: auto;
 `;
 
-const BasketItem = styled.div`
+const Item = styled.div`
   padding: 6px;
   display: flex;
   align-items: center;
@@ -16,18 +16,18 @@ const BasketItem = styled.div`
   justify-content: space-between;
 `;
 
-const BasketItemInfo = styled.div`
+const ItemInfo = styled.div`
   display: flex;
   flex-direction: column;
 `;
 
-const BasketItemName = styled.span`
+const ItemName = styled.span`
   font-size: 14px;
   line-height: 18px;
   color: #191919;
 `;
 
-const BasketItemPrice = styled.span`
+const ItemPrice = styled.span`
   font-size: 14px;
   line-height: 18px;
   letter-spacing: 0.16px;
@@ -35,13 +35,13 @@ const BasketItemPrice = styled.span`
   font-weight: 600;
 `;
 
-const BasketItemRight = styled.div`
+const ItemRight = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
 `
 
-const BasketItemCounterButton = styled.button`
+const ItemCounterButton = styled.button`
   border: none;
   background: transparent;
   display: flex;
@@ -55,7 +55,7 @@ const BasketItemCounterButton = styled.button`
     margin-left: 12px;
   }
 `
-const BasketItemNumber = styled.div`
+const ItemNumber = styled.div`
   font-size: 15px;
   line-height: 20px;
   display: flex;
@@ -67,13 +67,13 @@ const BasketItemNumber = styled.div`
   height: 32px;
 `
 
-const BasketItemDivider = styled.div`
+const ItemDivider = styled.div`
   height:1px;
   width: 100%;
   background: #f4f4f4;
   margin: 18px 0;
 `
-const BasketSumPriceButton = styled.button`
+const SumPriceButton = styled.button`
   padding: 16px 24px;
   background: #FFFFFF;
   border: 2px solid #1EA4CE;
@@ -99,15 +99,15 @@ const ButtonWrapper = styled.div`
 
 
 export {
-  BasketWrapper,
-  BasketItem,
-  BasketItemInfo,
-  BasketItemName,
-  BasketItemNumber,
-  BasketItemPrice,
-  BasketItemRight,
-  BasketItemCounterButton,
-  BasketItemDivider,
-  BasketSumPriceButton,
+  Wrapper,
+  Item,
+  ItemInfo,
+  ItemName,
+  ItemNumber,
+  ItemPrice,
+  ItemRight,
+  ItemCounterButton,
+  ItemDivider,
+  SumPriceButton,
   ButtonWrapper
 }

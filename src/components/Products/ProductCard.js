@@ -16,6 +16,8 @@ import 'react-toastify/dist/ReactToastify.css';
 const ProductCard = ({ product }) => {
   const basket = useSelector((state) => state.baskets);
   const dispatch = useDispatch();
+
+  // Create Action
   const addToBasket = () => {
     const res = addProduct(basket, product, dispatch);
     toast[res.status](res.message);
@@ -23,7 +25,10 @@ const ProductCard = ({ product }) => {
   return (
     <ProductCardWrapper>
       <ProductImageWrapper>
-        <ProductImage src="https://images.spoonacular.com/file/wximages/423186-312x231.png" alt="food-img"/>
+        <ProductImage 
+          src="https://images.spoonacular.com/file/wximages/423186-312x231.png" 
+          alt="food-img"
+        />
       </ProductImageWrapper>
       <ProductPrice>
         ₺ {product.price}
@@ -31,9 +36,7 @@ const ProductCard = ({ product }) => {
       <ProductName>
         {product.name}
       </ProductName>
-      <ProductAddButton
-        onClick={addToBasket}
-      >
+      <ProductAddButton onClick={addToBasket}>
         Add
       </ProductAddButton>
     </ProductCardWrapper>

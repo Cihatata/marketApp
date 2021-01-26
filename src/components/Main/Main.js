@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Suspense } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   MainStyled,
   AsideBasketInfoStyled,
@@ -14,11 +14,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const Products = React.lazy(() => import('../Products/Products'));
 
 const Main = () => {
-  //Filter state
-  const [sortingId, setSortingId] = useState(0);
-  const [selectedBrands, setSelectedBrands] = useState([]);
-  const [selectedTags, setSelectedTags] = useState([]);
-  const [itemType, setItemType] = useState('mug');
+  const filter = useSelector((state) => state.filter);
   const [pageNumber, setPageNumber] = useState(1);
   // if the screen is smaller than 1024px // Sidebar open close state
   const [isClickFilter, setIsClickFilter] = useState(false);
@@ -26,32 +22,23 @@ const Main = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    getProducts(pageNumber, sortingId, dispatch, itemType, selectedBrands, selectedTags);
-  }, [pageNumber, sortingId, itemType, selectedBrands, selectedTags])
+    getProducts(pageNumber, filter, dispatch);
+  }, [pageNumber, filter])
 
   return (
     <MainStyled aria-label="main">
       <AsideFilterStyled isClick={isClickFilter} aria-label="filter-section">
         <Filter
           setIsClickFilter={setIsClickFilter}
-          style={{ background: 'red' }}
-          sortingId={sortingId}
-          setSortingId={setSortingId}
-          selectedBrands={selectedBrands}
-          setSelectedBrands={setSelectedBrands}
-          selectedTags={selectedTags}
-          setSelectedTags={setSelectedTags}
         />
       </AsideFilterStyled>
       <ArticleStyled aria-label="product-section">
-        <Suspense fallback={<div>Yukleniyor</div>}>
+        <Suspense fallback={<div>Loading ...</div>}>
           <Products
             isClickBasket={isClickBasket}
             setIsClickBasket={setIsClickBasket}
             isClickFilter={isClickFilter}
             setIsClickFilter={setIsClickFilter}
-            setItemType={setItemType}
-            itemType={itemType}
             setPageNumber={setPageNumber}
           />
         </Suspense>
