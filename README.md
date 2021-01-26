@@ -3,7 +3,7 @@ This project is like an e-commerce frontend page. You can filter the products an
 
 ## Demo
 
-![](./docs/marketapp.mov)
+![](./docs/marketapp.gif)
 ## Features
 - Fetch Data from API
 - Product Filtering
