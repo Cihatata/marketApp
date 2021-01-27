@@ -4,8 +4,8 @@
   align-items: center;
   justify-content: center;
   color: #1EA4CE;
-  margin-top: 120px;
-  margin-bottom: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   font-size: 13px;
 }
 
@@ -13,4 +13,11 @@
   margin-right: 16px;
   margin-left: 16px;
   margin-bottom: 7px;
+}
+
+@media (min-width: 1024px) {
+  .footer-wrapper{
+    margin-top: 120px;
+    margin-bottom: 40px;
+  }
 }
