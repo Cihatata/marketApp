@@ -1,5 +1,6 @@
 # Market App
 This project is like an e-commerce frontend page. You can filter the products and add them to the basket. Finally you can buy.
+[LIVE DEMO](http://34.78.184.26)
 
 ## Demo
 ![](./docs/marketapp.png)
@@ -19,7 +20,8 @@ This project is like an e-commerce frontend page. You can filter the products an
 - Cypress
 - [react-toastify](https://fkhadra.github.io/react-toastify/introduction/)
 - [react-paginate](https://www.npmjs.com/package/react-paginate)
-- [json-server](https://github.com/typicode/json-server) 
+- [json-server](https://github.com/typicode/json-server)
+- Google Cloud for hosting
 
 ## Setup
 ```
