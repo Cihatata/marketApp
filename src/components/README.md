@@ -5,3 +5,5 @@ In this folder are the components who I use in the project. I coded UI component
 - I typed css to override the pagination library(./Prodcusts/pagination,css).
 - Mobile First Css code
 - React Hooks
+- I used data-testid attribute for test.
+- I used aria-label, tabindex, semantic html for accessibility.
